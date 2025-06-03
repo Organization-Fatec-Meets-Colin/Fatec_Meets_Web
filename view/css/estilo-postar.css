@@ -49,21 +49,9 @@ button:hover, .edit-btn:hover {
     background-color: var(--btn-hover);
 }
 
-/* Navbar Responsiva */
-.navbar {
-    background: var(--white);
-    padding: 15px 0;
-    border-bottom: 1px solid var(--light-gray);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-}
 
-.navbar-container {
+
+/* .navbar-container {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
@@ -96,7 +84,7 @@ button:hover, .edit-btn:hover {
 
 .navbar-item:hover, .navbar-item.active {
     color: var(--primary-color);
-}
+} */
 
 .form-group select {
     width: 100%;

@@ -1,2 +1,2 @@
-# Fatec_Meets_Web
-Versão web do projeto Fatec Meets
+# Fatec-Meets-Colin
+Projeto Integrador

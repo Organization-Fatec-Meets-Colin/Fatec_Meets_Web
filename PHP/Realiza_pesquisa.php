@@ -12,4 +12,5 @@ $ptitulo = $_POST['titulo'];
 $query = "SELECT * FROM eventos WHERE $titulo LIKE titulo";
 $stmt = $conexao->prepare($query);
 $stmt->execute();
+return $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>

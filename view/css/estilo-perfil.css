@@ -29,7 +29,7 @@ body {
 
 
 /* Navbar */
-.navbar {
+/* .navbar {
     background: var(--white);
     padding: 15px 0;
     border-bottom: 1px solid var(--light-gray);
@@ -45,19 +45,19 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
+} */
 
 .logo {
     font-weight: bold;
     font-size: 1.5rem;
 }
 
-.nav-links a {
+/* .nav-links a {
     margin-left: 20px;
     text-decoration: none;
     color: var(--primary-color);
     font-weight: 500;
-}
+} */
 
 /* Perfil */
 .profile-container {

@@ -11,6 +11,16 @@
     <title>Document</title>
 </head>
 <body>
+    <!-- tela que exibe os resultados de pesquisa -->
+
+    <?php 
     
+    $id = $_SESSION['idPesquisa'];
+
+    while ($id) {
+        echo $id;
+    }
+    
+    ?>
 </body>
 </html>

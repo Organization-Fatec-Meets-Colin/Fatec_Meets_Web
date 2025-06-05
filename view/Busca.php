@@ -1,7 +1,3 @@
-<?php require __DIR__ . '/../config.php';  // ou '/config.php' se estiver em raiz
-      require __DIR__ . '/../components/navbar.php';
-?>
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -14,11 +10,11 @@
 <body>
 
 
-
+<?php include '../components/navbar.php'; ?>
 
 <div class="container">
     <h1>Buscar Eventos</h1>
-    <form action="../PHP/Realiza_pesquisa.php" method="POST" class="search-form">
+    <form action="ResultadosBusca.php" method="GET" class="search-form">
         <div class="form-group">
             <label for="tipo">Tipo de Evento:</label>
             <select name="tipo" id="tipo">
@@ -65,8 +61,8 @@
         </div>
 
         <div class="form-group">
-            <label for="titulo">Titulo:</label>
-            <input type="text" name="titulo" id="titulo" placeholder="Digite algo...">
+            <label for="pesquisa">Pesquisar:</label>
+            <input type="text" name="pesquisa" id="pesquisa" placeholder="Digite algo...">
         </div>
 
         <button type="submit" class="btn">Buscar</button>

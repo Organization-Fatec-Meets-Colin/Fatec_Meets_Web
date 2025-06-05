@@ -1,4 +1,4 @@
-<?php require __DIR__ . '/../config.php';  // ou '/config.php' se estiver em raiz
+<?php require __DIR__ . '/../config.php';
       require __DIR__ . '/../components/navbar.php';
 
 require __DIR__ . '/../config.php';
@@ -15,14 +15,12 @@ if (!isset($_SESSION['usuario'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil - InstaClone</title>
+    <title>Perfil - Meets</title>
     <link rel="stylesheet" href="../view/css/estilo-perfil.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
-    <!-- Navbar -->
-<?php include '../components/navbar.php'; ?>
 
     <!-- Perfil -->
     <section class="profile-container">
@@ -31,8 +29,8 @@ if (!isset($_SESSION['usuario'])) {
 
             <div class="profile-info">
                 <div class="top-row">
-                    <h2>joaodasilva</h2>
-                    <button class="edit-btn">Editar perfil</button>
+                    <h2>matheusmarinho</h2>
+                    <a href="../view/EditarPerfil.php"><button class="edit-btn">Editar perfil</button></a>
                 </div>
                 <div class="stats">
                     <span><strong>45</strong> publicações</span>
@@ -40,21 +38,21 @@ if (!isset($_SESSION['usuario'])) {
                     <span><strong>876</strong> seguindo</span>
                 </div>
                 <div class="bio">
-                    <strong>João da Silva</strong><br>
+                    <strong>Matheus Marinho</strong><br>
                     Desenvolvedor e amante de fotografia 📸<br>
-                    www.joaosilva.dev
+                    www.devmatheusmarinho.dev
                 </div>
             </div>
         </div>
 
         <!-- Galeria de Fotos -->
         <div class="gallery">
-            <div class="photo"><img src="https://source.unsplash.com/random/300x300?sig=1" alt=""></div>
-            <div class="photo"><img src="https://source.unsplash.com/random/300x300?sig=2" alt=""></div>
-            <div class="photo"><img src="https://source.unsplash.com/random/300x300?sig=3" alt=""></div>
-            <div class="photo"><img src="https://source.unsplash.com/random/300x300?sig=4" alt=""></div>
-            <div class="photo"><img src="https://source.unsplash.com/random/300x300?sig=5" alt=""></div>
-            <div class="photo"><img src="https://source.unsplash.com/random/300x300?sig=6" alt=""></div>
+            <div class="photo"><img src="imagens/post1.jpg" alt=""></div>
+            <div class="photo"><img src="imagens/post2.jpg" alt=""></div>
+            <div class="photo"><img src="imagens/post3.jpg" alt=""></div>
+            <div class="photo"><img src="imagens/post1.jpg" alt=""></div>
+            <div class="photo"><img src="imagens/post2.jpg" alt=""></div>
+            <div class="photo"><img src="imagens/post3.jpg" alt=""></div>
         </div>
     </section>
 

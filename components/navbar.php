@@ -1,7 +1,6 @@
 <?php
 // components/navbar.php
 
-// Inclui apenas a configuração central, que já tem BASE_URL e session_start
 require __DIR__ . '/../config.php';
 ?>
 
@@ -24,7 +23,16 @@ require __DIR__ . '/../config.php';
 
         <div class="navbar-user-area">
             <?php if (isset($_SESSION['usuario'])): ?>
-                <img src="<?= htmlspecialchars($_SESSION['usuario']['foto']) ?>" class="profile-img-mini" alt="Perfil">
+                <?php
+                    $foto = $_SESSION['usuario']['foto'] ?? '';
+                    $caminhoPadrao = BASE_URL . 'imagem/imgPadrao.png';
+
+                    // Verifica se o caminho da imagem existe fisicamente
+                    $caminhoFoto = $foto && file_exists(__DIR__ . '/../' . $foto)
+                        ? BASE_URL . $foto
+                        : $caminhoPadrao;
+                ?>
+                <img src="<?= htmlspecialchars($caminhoFoto) ?>" class="profile-img-mini" alt="Perfil">
                 <a href="<?= BASE_URL ?>PHP/logout.php"><button class="profile-btn">Logout</button></a>
             <?php else: ?>
                 <a href="<?= BASE_URL ?>view/Login.php"><button class="profile-btn">Login</button></a>

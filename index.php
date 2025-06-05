@@ -1,5 +1,11 @@
 <?php
 require __DIR__ . '/config.php';
+
+// Consulta dos eventos
+$stmt = $pdo->query("SELECT e.*, u.nome, u.foto FROM eventos e
+                     JOIN users u ON e.usuario_id = u.user_id
+                     ORDER BY e.data_criacao DESC");
+$eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -10,34 +16,47 @@ require __DIR__ . '/config.php';
     <title>Feed - Fatec Meet</title>
     <link rel="stylesheet" href="view/css/estilo-feeds.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
 </head>
 <body>
 
 <!-- Navbar -->
 <?php include __DIR__ . '/components/navbar.php'; ?>
 
-
 <!-- Feed de Posts -->
 <div class="feed">
-    <a href="view/Meet.php" class="post">
-        <!-- Exemplo de post fixo (você pode carregar do banco depois) -->
+
+    <!-- Posts reais do banco de dados -->
+    <?php if (count($eventos) === 0): ?>
+        <p style="text-align:center;">Nenhum evento ainda. Seja o primeiro a postar!</p>
+    <?php else: ?>
+        <?php foreach ($eventos as $evento): ?>
             <div class="post">
-                <img src="view/imagens/post1.jpg" alt="Imagem do Post 1" class="post-image">
-                <h2 class="post-title">Reunião Grupo ADM</h2>
-                <p class="post-text">Este é o conteúdo do primeiro post. Aqui você pode compartilhar ideias, fotos e muito mais.</p>
-                <div class="post-footer">Publicado em 10/10/2023 por Usuário: <u>NicolasCagezinho</u>
+                <?php if ($evento['imagem']): ?>
+                    <div class="post-image">
+                        <img src="<?= htmlspecialchars($evento['imagem']) ?>" alt="Imagem do evento">
+                    </div>
+                <?php endif; ?>
+                <div class="post-content">
+                    <h3><?= htmlspecialchars($evento['titulo']) ?></h3>
+                    <p><strong>Local:</strong> <?= htmlspecialchars($evento['local']) ?></p>
+                    <p><strong>Categoria:</strong> <?= htmlspecialchars($evento['categoria']) ?></p>
+                    <p><strong>Quando:</strong> <?= date('d/m/Y H:i', strtotime($evento['data_evento'])) ?></p>
+                    <p><?= nl2br(htmlspecialchars($evento['descricao'])) ?></p>
+                    <div class="post-footer">
+                        Publicado em <?= date('d/m/Y H:i', strtotime($evento['data_criacao'])) ?> por:
+                        <u><?= htmlspecialchars($evento['nome']) ?></u>
+                        <img src="<?= htmlspecialchars($evento['foto']) ?>" class="profile-img-mini" alt="Foto perfil">
+                    </div>
+                </div>
             </div>
-        </div>
-    </a>
+        <?php endforeach; ?>
+    <?php endif; ?>
 </div>
 
-
-
 <script>
- document.querySelector('.menu-toggle').addEventListener('click', function () {
- document.querySelector('.navbar-links').classList.toggle('active');
- });
+    document.querySelector('.menu-toggle').addEventListener('click', function () {
+        document.querySelector('.navbar-links').classList.toggle('active');
+    });
 </script>
 
 </body>

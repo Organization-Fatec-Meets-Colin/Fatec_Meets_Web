@@ -1,6 +1,5 @@
 <?php
-require __DIR__ . '/../config.php';
+session_start();
 session_destroy();
-header('Location: ' . BASE_URL . 'view/Login.php');
+header('Location: ' . BASE_URL . 'view/login.php');
 exit;
-

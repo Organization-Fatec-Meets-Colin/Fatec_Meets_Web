@@ -15,6 +15,14 @@ require __DIR__ . '/../config.php';
             <i class="fas fa-bars"></i>
         </div>
 
+            <!-- dark mode -->
+        <div class="navbar-user-area">
+        <!-- ✅ Botão interruptor -->
+        <label for="dark-toggle" class="switch">
+        <span class="slider"></span>
+        </label>
+        </div>
+
         <div class="navbar-links">
             <a href="<?= BASE_URL ?>index.php" class="navbar-item">Página inicial</a>
             <a href="<?= BASE_URL ?>view/Busca.php" class="navbar-item">Buscar</a>
@@ -29,6 +37,8 @@ require __DIR__ . '/../config.php';
             <?php else: ?>
                 <a href="<?= BASE_URL ?>view/Login.php"><button class="profile-btn">Login</button></a>
             <?php endif; ?>
+
+                
         </div>
     </div>
 </nav>

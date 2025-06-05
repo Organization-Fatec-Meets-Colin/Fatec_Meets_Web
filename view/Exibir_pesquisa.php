@@ -15,11 +15,7 @@
 
     <?php 
     
-    $id = $_SESSION['idPesquisa'];
-
-    while ($id) {
-        echo $id;
-    }
+    echo "achou a pagina";
     
     ?>
 </body>

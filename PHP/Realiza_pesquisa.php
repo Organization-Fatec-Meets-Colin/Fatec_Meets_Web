@@ -11,22 +11,11 @@ $ptitulo = $_POST['titulo'];
 
 /* puxa os dados do banco de dados */
 
-// query com o comando sql
-$query = "SELECT * FROM eventos";
-// $query = "SELECT * FROM `eventos`";
+// consulta no banco
+$stmt = $pdo->query("SELECT e.*, u.nome, u.foto FROM eventos e
+                     JOIN users u ON e.usuario_id = u.user_id 
+                     WHERE e.titulo LIKE '%$ptitulo%' ORDER BY e.data_criacao DESC");
+$eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// executando o sql
- /* $stmt = $pdo->prepare($query);
-$stmt->execute();
 
-$array = $pdo->$query;*/
-
-$array = $pdo->query($query)->fetchAll();
-
-print_r($array);
-// while ($array){
-//     echo $array['id'];
-// };
-
-$_SESSION['idPesquisa'] = $array;
 ?>

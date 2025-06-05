@@ -1,11 +1,9 @@
 <?php
-require __DIR__ . '/config.php';
+    require __DIR__ . '/../config.php';
+    require __DIR__ . '/../components/navbar.php';
 
-// Consulta dos eventos
-$stmt = $pdo->query("SELECT e.*, u.nome, u.foto FROM eventos e
-                     JOIN users u ON e.usuario_id = u.user_id
-                     ORDER BY e.data_criacao DESC");
-$eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    // puxando a pesquisa de outra página
+    require __DIR__ . '/../PHP/Realiza_pesquisa.php';
 ?>
 
 <!DOCTYPE html>
@@ -13,19 +11,17 @@ $eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feed - Fatec Meet</title>
-    <link rel="stylesheet" href="view/css/estilo-feeds.css">
+    <title>Resultados - pesquisa</title>
+    <link rel="stylesheet" href="css/estilo-feeds.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
 
-<!-- Navbar -->
-<?php include __DIR__ . '/components/navbar.php'; ?>
+<!-- tela que exibe os resultados de pesquisa (igual ao index) -->
 
-<!-- Feed de Posts -->
 <div class="feed">
 
-    <!-- Posts reais do banco de dados -->
+    <!-- exibição dos posts encontrados pela pesquisa -->
     <?php if (count($eventos) === 0): ?>
         <p style="text-align:center;">Nenhum evento ainda. Seja o primeiro a postar!</p>
     <?php else: ?>
@@ -33,7 +29,7 @@ $eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <div class="post">
                 <?php if ($evento['imagem']): ?>
                     <div class="post-image">
-                        <img src="<?= htmlspecialchars($evento['imagem']) ?>" alt="Imagem do evento">
+                        <img src="<?= htmlspecialchars('../'.$evento['imagem']) ?>" alt="Imagem do evento">
                     </div>
                 <?php endif; ?>
                 <div class="post-content">
@@ -45,19 +41,14 @@ $eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <div class="post-footer">
                         Publicado em <?= date('d/m/Y H:i', strtotime($evento['data_criacao'])) ?> por:
                         <u><?= htmlspecialchars($evento['nome']) ?></u>
-                        <img src="<?= htmlspecialchars($evento['foto']) ?>" class="profile-img-mini" alt="Foto perfil">
+                        <img src="<?= htmlspecialchars('../'.$evento['foto']) ?>" class="profile-img-mini" alt="Foto perfil">
                     </div>
                 </div>
             </div>
         <?php endforeach; ?>
     <?php endif; ?>
-</div>
 
-<script>
-    document.querySelector('.menu-toggle').addEventListener('click', function () {
-        document.querySelector('.navbar-links').classList.toggle('active');
-    });
-</script>
+</div>
 
 </body>
 </html>

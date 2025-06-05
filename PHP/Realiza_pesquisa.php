@@ -17,5 +17,4 @@ $stmt = $pdo->query("SELECT e.*, u.nome, u.foto FROM eventos e
                      WHERE e.titulo LIKE '%$ptitulo%' ORDER BY e.data_criacao DESC");
 $eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-
 ?>

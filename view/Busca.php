@@ -14,7 +14,7 @@
 
 <div class="container">
     <h1>Buscar Eventos</h1>
-    <form action="ResultadosBusca.php" method="GET" class="search-form">
+    <form action="Exibir_pesquisa.php" method="GET" class="search-form">
         <div class="form-group">
             <label for="tipo">Tipo de Evento:</label>
             <select name="tipo" id="tipo">

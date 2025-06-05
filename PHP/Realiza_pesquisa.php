@@ -1,6 +1,5 @@
 <?php
     require __DIR__ . '/../config.php';
-    require __DIR__ . '/../components/navbar.php';
 
 /* recebe os dados da tela de pesquisa */
 $ptipo = $_POST['tipo'];
@@ -13,15 +12,21 @@ $ptitulo = $_POST['titulo'];
 /* puxa os dados do banco de dados */
 
 // query com o comando sql
-$query = "SELECT `id` FROM `eventos` WHERE titulo like 'teste';";
+$query = "SELECT * FROM eventos";
+// $query = "SELECT * FROM `eventos`";
 
 // executando o sql
-$stmt = $conexao->prepare($query);
+ /* $stmt = $pdo->prepare($query);
 $stmt->execute();
 
-$array = $conexao->$query;
+$array = $pdo->$query;*/
+
+$array = $pdo->query($query)->fetchAll();
 
 print_r($array);
+// while ($array){
+//     echo $array['id'];
+// };
 
 $_SESSION['idPesquisa'] = $array;
 ?>

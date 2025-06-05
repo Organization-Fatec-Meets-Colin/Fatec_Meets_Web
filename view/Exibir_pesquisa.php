@@ -11,7 +11,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Resultados - pesquisa</title>
+    <link rel="stylesheet" href="css/estilo-feeds.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
 
@@ -27,7 +29,7 @@
             <div class="post">
                 <?php if ($evento['imagem']): ?>
                     <div class="post-image">
-                        <img src="<?= htmlspecialchars($evento['imagem']) ?>" alt="Imagem do evento">
+                        <img src="<?= htmlspecialchars('../'.$evento['imagem']) ?>" alt="Imagem do evento">
                     </div>
                 <?php endif; ?>
                 <div class="post-content">
@@ -39,13 +41,13 @@
                     <div class="post-footer">
                         Publicado em <?= date('d/m/Y H:i', strtotime($evento['data_criacao'])) ?> por:
                         <u><?= htmlspecialchars($evento['nome']) ?></u>
-                        <img src="<?= htmlspecialchars($evento['foto']) ?>" class="profile-img-mini" alt="Foto perfil">
+                        <img src="<?= htmlspecialchars('../'.$evento['foto']) ?>" class="profile-img-mini" alt="Foto perfil">
                     </div>
                 </div>
             </div>
         <?php endforeach; ?>
     <?php endif; ?>
-    
+
 </div>
 
 </body>

@@ -17,24 +17,20 @@
     <form action="Exibir_pesquisa.php" method="GET" class="search-form">
         <div class="form-group">
             <label for="tipo">Tipo de Evento:</label>
-            <input type="text" name="tipo" id="tipo">
-            <!-- <select name="tipo" id="tipo">
-                <option value="%">Todos</option>
-                <option value="Palestra">Palestra</option>
-                <option value="Workshop">Workshop</option>
-                <option value="Festa">Festa</option>
-                <option value="Feira">Feira</option>
+            <select name="tipo" id="tipo">
+                <option value="%" selected>Todos</option>
                 <option value="estudos">Estudos</option>
                 <option value="leitura">Leitura</option>
                 <option value="esporte">Esportes</option>
-            </select> -->
+                <option value="musica">Musica</option>
+            </select>
         </div>
 
         <div class="form-group">
             <label for="local">Local:</label>
             <input type="text" name="local" id="local">
             <!-- <select name="local" id="local">
-                <option value="%">Todos</option>
+                <option value="%" selected>Todos</option>
                 <option value="Auditório">Auditório</option>
                 <option value="Sala 101">Sala 101</option>
                 <option value="Pátio">Pátio</option>

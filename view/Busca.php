@@ -9,7 +9,7 @@
 </head>
 <body>
 
-
+<!-- Navbar -->
 <?php include '../components/navbar.php'; ?>
 
 <div class="container">
@@ -22,7 +22,7 @@
                 <option value="estudos">Estudos</option>
                 <option value="leitura">Leitura</option>
                 <option value="esporte">Esportes</option>
-                <option value="musica">Musica</option>
+                <option value="música">Música</option>
             </select>
         </div>
 

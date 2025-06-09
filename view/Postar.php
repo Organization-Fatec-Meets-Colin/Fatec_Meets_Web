@@ -1,16 +1,3 @@
-<?php 
-      require __DIR__ . '/../config.php';  
-      require __DIR__ . '/../components/navbar.php';
-
-require __DIR__ . '/../config.php';
-if (!isset($_SESSION['usuario'])) {
-    header('Location: ' . BASE_URL . 'view/Login.php');
-    exit;
-}
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -25,7 +12,16 @@ if (!isset($_SESSION['usuario'])) {
 
 <body>
 
+<?php 
+require __DIR__ . '/../config.php'; 
+    require __DIR__ . '/../components/navbar.php';
 
+require __DIR__ . '/../config.php';
+if (!isset($_SESSION['usuario'])) {
+    header('Location: ' . BASE_URL . 'view/Login.php');
+    exit;
+}
+?>
     
     <div class="container">
         <div class="post-form">

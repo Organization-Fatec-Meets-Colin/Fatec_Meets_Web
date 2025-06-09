@@ -32,3 +32,4 @@ $stmt->execute([$usuario_id, $titulo, $local, $categoria, $data_evento, $descric
 
 header("Location: ../index.php");
 exit;
+?>

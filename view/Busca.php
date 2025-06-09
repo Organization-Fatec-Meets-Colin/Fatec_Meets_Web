@@ -17,40 +17,55 @@
     <form action="Exibir_pesquisa.php" method="GET" class="search-form">
         <div class="form-group">
             <label for="tipo">Tipo de Evento:</label>
-            <select name="tipo" id="tipo">
-                <option value="">Todos</option>
+            <input type="text" name="tipo" id="tipo">
+            <!-- <select name="tipo" id="tipo">
+                <option value="%">Todos</option>
                 <option value="Palestra">Palestra</option>
                 <option value="Workshop">Workshop</option>
                 <option value="Festa">Festa</option>
                 <option value="Feira">Feira</option>
-            </select>
+                <option value="estudos">Estudos</option>
+                <option value="leitura">Leitura</option>
+                <option value="esporte">Esportes</option>
+            </select> -->
         </div>
 
         <div class="form-group">
             <label for="local">Local:</label>
-            <select name="local" id="local">
-                <option value="">Todos</option>
+            <input type="text" name="local" id="local">
+            <!-- <select name="local" id="local">
+                <option value="%">Todos</option>
                 <option value="Auditório">Auditório</option>
                 <option value="Sala 101">Sala 101</option>
                 <option value="Pátio">Pátio</option>
                 <option value="Laboratório">Laboratório</option>
-            </select>
+                <option value="Biblioteca">Biblioteca</option>
+                <option value="Cantina">Cantina</option>
+                <option value="Sala de Estudos">Sala de Estudos</option>
+                <option value="Fatec">Fatec</option>
+            </select> -->
         </div>
 
-        <div class="form-group">
-            <label for="data">Data:</label>
-            <input type="date" name="data" id="data">
+        <!-- <div class="form-group">
+            <label for="data_inicial">Data:</label>
+            <input type="date" name="data_inicial" id="data_inicial" placeholder="Desde">
+        </div> -->
+
+        <!-- <div class="form-group">
+            <label for="data_final">Até:</label>
+            <input type="date" name="data_final" id="data_final" placeholder="até">
         </div>
 
         <div class="form-group">
             <label for="hora">Hora:</label>
             <input type="time" name="hora" id="hora">
-        </div>
+        </div> -->
 
-        <div class="form-group">
+        <!-- Não tem semestre no cadastro dos eventos (não sei porque pesquisar por semestre) -->
+        <!-- <div class="form-group">
             <label for="semestre">Semestre:</label>
             <select name="semestre" id="semestre">
-                <option value="">Todos</option>
+                <option value="%">Todos</option>
                 <option value="1">1º Semestre</option>
                 <option value="2">2º Semestre</option>
                 <option value="3">3º Semestre</option>
@@ -58,7 +73,7 @@
                 <option value="5">5º Semestre</option>
                 <option value="6">6º Semestre</option>
             </select>
-        </div>
+        </div> -->
 
         <div class="form-group">
             <label for="pesquisa">Pesquisar:</label>

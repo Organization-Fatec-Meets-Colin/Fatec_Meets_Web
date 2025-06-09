@@ -30,7 +30,7 @@ if (!isset($_SESSION['usuario'])) {
     <div class="container">
         <div class="post-form">
             <h2>Criar Novo Post</h2>
-            <form action="../PHP/Upload.php" method="POST" enctype="multipart/form-data">
+            <form action="../PHP/upload.php" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="titulo">Título do evento:</label>
                     <input type="text" id="titulo" name="titulo" required>

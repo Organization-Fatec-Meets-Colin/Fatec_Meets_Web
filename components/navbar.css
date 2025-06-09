@@ -124,3 +124,74 @@ button:hover, .edit-btn:hover {
         display: block;
     }
 }
+
+/*mode escuro*/
+
+/* Estilo do botão tipo interruptor */
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+}
+
+#theme-switch {
+    display: none;
+}
+
+.switch {
+    width: 50px;
+    height: 26px;
+    background-color: #ccc;
+    border-radius: 50px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.switch::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 50%;
+    top: 3px;
+    left: 3px;
+    transition: transform 0.3s ease;
+}
+
+#theme-switch:checked + .switch {
+    background-color: #333;
+}
+
+#theme-switch:checked + .switch::before {
+    transform: translateX(24px);
+}
+
+/* Modo escuro */
+body.dark-mode {
+    background-color: #1f1f1f;
+    color: #f0f0f0;
+}
+
+body.dark-mode .navbar {
+    background-color: #2a2a2a;
+    border-bottom: 1px solid #444;
+}
+
+body.dark-mode .navbar-item {
+    color: #f0f0f0;
+}
+
+body.dark-mode .navbar-item:hover {
+    color: var(--secondary-color);
+}
+
+body.dark-mode .profile-btn {
+    border-color: var(--secondary-color);
+    color: var(--secondary-color);
+}
+
+body.dark-mode .switch {
+    background-color: #555;
+}

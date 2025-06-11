@@ -4,6 +4,7 @@ require __DIR__ . '/config.php';
 // Consulta dos eventos
 $stmt = $pdo->query("SELECT e.*, u.nome, u.foto FROM eventos e
                      JOIN users u ON e.usuario_id = u.user_id
+                     WHERE e.status = 1
                      ORDER BY e.data_criacao DESC");
 $eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>

@@ -1,6 +1,7 @@
 <?php
 // components/navbar.php
 
+// Inclui apenas a configuração central, que já tem BASE_URL e session_start
 require __DIR__ . '/../config.php';
 ?>
 
@@ -14,6 +15,15 @@ require __DIR__ . '/../config.php';
             <i class="fas fa-bars"></i>
         </div>
 
+        <!-- dark mode -->
+        <div class="navbar-user-area">
+        <!-- ✅ Botão interruptor -->
+        <label for="dark-toggle" class="switch">
+        <span class="slider"></span>
+        </label>
+        </div>
+
+        <!-- Botões de navegação para outra tela -->
         <div class="navbar-links">
             <a href="<?= BASE_URL ?>index.php" class="navbar-item">Página inicial</a>
             <a href="<?= BASE_URL ?>view/Busca.php" class="navbar-item">Buscar</a>
@@ -21,6 +31,7 @@ require __DIR__ . '/../config.php';
             <a href="<?= BASE_URL ?>view/Perfil.php" class="navbar-item">Perfil</a>
         </div>
 
+        <!-- Parte que mostra o usuário -->
         <div class="navbar-user-area">
             <?php if (isset($_SESSION['usuario'])): ?>
                 <?php
@@ -33,6 +44,8 @@ require __DIR__ . '/../config.php';
                     : $caminhoPadrao;
                 ?>
                 <img src="<?= htmlspecialchars($caminhoFoto) ?>" class="profile-img-mini" alt="Perfil">
+
+                <!-- Botão de login ou de logout -->
                 <a href="<?= BASE_URL ?>PHP/logout.php"><button class="profile-btn">Logout</button></a>
             <?php else: ?>
                 <a href="<?= BASE_URL ?>view/Login.php"><button class="profile-btn">Login</button></a>

@@ -18,10 +18,10 @@ require __DIR__ . '/../config.php';
         <!-- dark mode -->
         <div class="navbar-user-area">
         <!-- ✅ Botão interruptor -->
-        <div class="theme-toggle">
-        <input type="checkbox" id="theme-switch">
-        <label for="theme-switch" class="switch"></label>
-        </div>
+            <div class="theme-toggle">
+                <input type="checkbox" id="theme-switch">
+                <label for="theme-switch" class="switch"></label>
+            </div>
         </div>
 
         <!-- Botões de navegação para outra tela -->

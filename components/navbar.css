@@ -46,6 +46,10 @@ button:hover, .edit-btn:hover {
     background-color: var(--btn-hover);
 }
 
+.post-content a{
+    color: var(--primary-color);
+}
+
 /* Navbar Responsiva */
 .navbar {
     background: var(--white);
@@ -197,5 +201,5 @@ body.dark-mode .switch {
 }
 
 body.dark-mode .post{
-    background-color: #555;
+    background-color: #2a2a2a;
 }

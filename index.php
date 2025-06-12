@@ -33,15 +33,18 @@ $eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <p style="text-align:center;">Nenhum evento ainda. Seja o primeiro a postar!</p>
         <?php else: ?>
             <?php foreach ($eventos as $evento): ?>
+                <!-- encontrou os posts -->
                 <div class="post">
                     <?php if ($evento['imagem']): ?>
                         
+                        <!-- imagem do post -->
                         <a href="view/Evento.php?id=<?= $evento['id'] ?>">
                             <div class="post-image">
                                 <img src="<?= htmlspecialchars($evento['imagem']) ?>" alt="Imagem do evento">
                             </div>
                         </a>
                     <?php endif; ?>
+                    <!-- conteúdo do post -->
                     <div class="post-content">
                         <h3>
                             <a href="view/Evento.php?id=<?= $evento['id'] ?>">

@@ -203,3 +203,8 @@ body.dark-mode .switch {
 body.dark-mode .post{
     background-color: #2a2a2a;
 }
+
+body.darkmode .container{
+    background-color: #2a2a2a;
+    color: #f0f0f0; 
+}

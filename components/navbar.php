@@ -18,9 +18,10 @@ require __DIR__ . '/../config.php';
         <!-- dark mode -->
         <div class="navbar-user-area">
         <!-- ✅ Botão interruptor -->
-        <label for="dark-toggle" class="switch">
-        <span class="slider"></span>
-        </label>
+        <div class="theme-toggle">
+        <input type="checkbox" id="theme-switch">
+        <label for="theme-switch" class="switch"></label>
+        </div>
         </div>
 
         <!-- Botões de navegação para outra tela -->
@@ -53,10 +54,39 @@ require __DIR__ . '/../config.php';
         </div>
     </div>
 
-    <div class="theme-toggle">
-        <input type="checkbox" id="theme-switch">
-        <label for="theme-switch" class="switch"></label>
+    <!-- Carrega tema escuro ou claro -->
+        <script>
+        const themeSwitch = document.getElementById('theme-switch');
+        const body = document.body;
+
+        // Carrega o tema salvo
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+            themeSwitch.checked = true;
+        }
+
+        themeSwitch.addEventListener('change', () => {
+            if (themeSwitch.checked) {
+                body.classList.add('dark-mode');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.classList.remove('dark-mode');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+        </script>
+
+    <!-- teste do Vlibras -->
+    <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
     </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
 
 </nav>
 

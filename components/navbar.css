@@ -195,3 +195,7 @@ body.dark-mode .profile-btn {
 body.dark-mode .switch {
     background-color: #555;
 }
+
+body.dark-mode .post{
+    background-color: #555;
+}

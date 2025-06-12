@@ -196,6 +196,6 @@ body.dark-mode .switch {
     background-color: #555;
 }
 
-body.dark-mode .post-content{
-    color: white;
+body.dark-mode .post{
+    background-color: #555;
 }

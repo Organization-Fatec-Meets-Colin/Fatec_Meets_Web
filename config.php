@@ -15,14 +15,10 @@ if (!defined('BASE_URL')) {
 }
 
 // Dados de conexão com banco de dados
-$host = 'localhost';
+$host = 'sql312.infinityfree.com';
 $db   = 'if0_38701439_fatecmeets';
-$user = 'root';
-$pass = '';
-// $host = 'sql312.infinityfree.com';
-// $db   = 'if0_38701439_fatecmeets';
-// $user = 'if0_38701439';
-// $pass = 'Ye20N4PfvZ';
+$user = 'if0_38701439';
+$pass = 'Ye20N4PfvZ';
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pass);

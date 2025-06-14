@@ -1,4 +1,18 @@
+<?php
+require __DIR__ . '/../config.php';
 
+// Verifica se o usuário está logado
+if (!isset($_SESSION['usuario'])) {
+    header('Location: ' . BASE_URL . 'view/Login.php');
+    exit;
+}
+
+// Dados do usuário logado
+$usuario = $_SESSION['usuario'];
+$foto = !empty($usuario['foto']) ? BASE_URL . $usuario['foto'] : 'https://i.pravatar.cc/150?img=32';
+
+
+?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">

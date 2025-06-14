@@ -33,7 +33,7 @@ include '../components/navbar.php';
 <head>
     <meta charset="UTF-8">
     <title><?= htmlspecialchars($evento['titulo']) ?> - Evento</title>
-    <link rel="stylesheet" href="css/estilo-feeds.css">
+    <link rel="stylesheet" href="css/estilo-evento.css">
 </head>
 <body>
 

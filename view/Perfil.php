@@ -24,6 +24,7 @@ $stmtUser->execute([$email]);
 $user = $stmtUser->fetch(PDO::FETCH_ASSOC);
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     if (!$usuario) {
         throw new Exception("Usuário não encontrado");
     }
@@ -71,6 +72,11 @@ if (!$user) {
     echo "Usuário não encontrado.";
     exit;
 >>>>>>> Stashed changes
+=======
+if (!$user) {
+    echo "Usuário não encontrado.";
+    exit;
+>>>>>>> Stashed changes
 }
 
 $userId = $user['user_id']; // ID necessário para buscar eventos
@@ -94,6 +100,7 @@ $eventos = $stmtEventos->fetchAll(PDO::FETCH_ASSOC);
 <html>
 <head>
     <meta charset="UTF-8">
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <titulo><?= htmlspecialchars($usuario['nome'] ?? 'Perfil') ?> - Meets</titulo>
@@ -199,6 +206,27 @@ $eventos = $stmtEventos->fetchAll(PDO::FETCH_ASSOC);
     <p><strong>Email:</strong> <?= htmlspecialchars($user['email']) ?></p>
     <p><strong>Número:</strong> <?= htmlspecialchars($user['numero']) ?></p>
 
+=======
+    <title>Perfil de <?= htmlspecialchars($user['name']) ?></title>
+    <style>
+        body { font-family: Arial; background-color: #f5f5f5; margin: 20px; }
+        .perfil { background: white; padding: 20px; border-radius: 10px; max-width: 800px; margin: auto; }
+        .perfil img { width: 150px; border-radius: 50%; }
+        .eventos { margin-top: 30px; }
+        .evento { border-bottom: 1px solid #ccc; padding: 15px 0; }
+        .evento img { max-width: 100%; border-radius: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="perfil">
+    <h1>Perfil de <?= htmlspecialchars($user['name']) ?></h1>
+    <img src="<?= $user['profile_image'] ? htmlspecialchars($user['profile_image']) : 'img/default.png' ?>" alt="Foto de perfil">
+    <p><strong>Apelido:</strong> <?= htmlspecialchars($user['nickname']) ?></p>
+    <p><strong>Email:</strong> <?= htmlspecialchars($user['email']) ?></p>
+    <p><strong>Número:</strong> <?= htmlspecialchars($user['numero']) ?></p>
+
+>>>>>>> Stashed changes
     <div class="eventos">
         <h2>Eventos Criados</h2>
         <?php if (count($eventos) === 0): ?>
@@ -217,6 +245,9 @@ $eventos = $stmtEventos->fetchAll(PDO::FETCH_ASSOC);
                        💬 Comentários: <?= $evento['total_comments'] ?> |
                        ✅ Confirmados: <?= $evento['total_presencas'] ?>
                     </p>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
                 </div>
             <?php endforeach; ?>

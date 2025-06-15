@@ -8,7 +8,7 @@ USE FatecMeets;
 CREATE TABLE users (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
-    nickmaname varchar(255) NOT NULL,
+    nickname varchar(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     numero varchar(25),
     password VARCHAR(255) NOT NULL,

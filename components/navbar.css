@@ -46,6 +46,14 @@ button:hover, .edit-btn:hover {
     background-color: var(--btn-hover);
 }
 
+body button.profile-btn:hover{
+    color: #fff;
+}
+
+body.dark-mode button.profile-btn:hover{
+    color: #fff;
+}
+
 .post-content a{
     color: var(--primary-color);
 }
@@ -214,4 +222,9 @@ body.dark-mode div.meet-container{
 
 body.dark-mode .hint {
     color: var(--white);
+}
+
+body.dark-mode div.profile-img-container{
+    background-color: var(--white);
+    border-radius: 50%;
 }

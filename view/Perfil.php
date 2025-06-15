@@ -72,7 +72,7 @@ require __DIR__ . '/../components/navbar.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <titulo><?= htmlspecialchars($usuario['nome'] ?? 'Perfil') ?> - Meets</titulo>
+    <!-- <titulo><?= htmlspecialchars($usuario['nome'] ?? 'Perfil') ?> - Meets</titulo> -->
     <link rel="stylesheet" href="<?= BASE_URL ?>view/css/estilo-perfil.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -81,7 +81,7 @@ require __DIR__ . '/../components/navbar.php';
 <section class="profile-container">
     <div class="profile-header">
         <div class="profile-img-container">
-            <pre><?= $foto ?></pre>
+            <!-- <pre><?= $foto ?></pre> -->
 
                 <img src="<?= htmlspecialchars($foto) ?>" 
      alt="Foto de Perfil" 

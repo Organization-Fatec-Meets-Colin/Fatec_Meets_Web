@@ -285,7 +285,7 @@ textarea {
 }
 
 .submit-btn:hover {
-    background-color: var(--primary-hover);
+    background-color: var(--btn-hover);
     transform: translateY(-2px);
 }
 

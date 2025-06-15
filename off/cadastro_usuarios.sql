@@ -22,6 +22,7 @@ CREATE TABLE events (
     event_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT,
     title VARCHAR(255) NOT NULL,
+    likes INT,
     description TEXT,
     event_date DATETIME NOT NULL,
     location VARCHAR(255),
@@ -43,16 +44,18 @@ CREATE TABLE likes (
     UNIQUE(user_id, event_id) -- Garantir que um usuário possa curtir um evento apenas uma vez
 );
 
--- Tabela de comentários (comments)
-CREATE TABLE comments (
-    comment_id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT,
-    event_id INT,
-    content TEXT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
-    FOREIGN KEY (event_id) REFERENCES events(event_id) ON DELETE CASCADE
+-- Cria uma tabela para armazenar os comentários dos eventos
+CREATE TABLE comentarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,            -- ID único do comentário
+    evento_id INT,                                -- Referência ao evento
+    usuario_id INT,                               -- Referência ao usuário que comentou
+    comentario TEXT,                              -- Texto do comentário (sem limite rígido de 255)
+    data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP, -- Data/hora automática da criação
+    FOREIGN KEY (evento_id) REFERENCES eventos(id),
+    FOREIGN KEY (usuario_id) REFERENCES users(user_id)
 );
+
+
 
 -- Tabela de presenças (attendees)
 CREATE TABLE attendees (

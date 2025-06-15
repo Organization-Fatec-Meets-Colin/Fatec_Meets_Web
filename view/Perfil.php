@@ -23,10 +23,13 @@ try {
         throw new Exception("Usuário não encontrado");
     }
 
-    // Definir foto de perfil (com fallback local)
-    $foto = !empty($usuario['profile_image']) ? 
-            BASE_URL . $usuario['profile_image'] : 
-            BASE_URL . 'assets/default-profile.jpg';
+// CORREÇÃO NO CÓDIGO PHP (parte superior)
+$foto = !empty($usuario['profile_image']) ? 
+        BASE_URL . 'uploads/' . $usuario['profile_image'] : 
+        BASE_URL . 'uploads/imgPadrao.png';
+
+// Verifique o nome real do campo no banco:
+//print_r($usuario); // Descomente para debug
 
     // Buscar estatísticas reais
     $stats = [
@@ -36,23 +39,19 @@ try {
     ];
 
     // Contar eventos do usuário
-    $stmt = $pdo->prepare("SELECT COUNT(*) FROM eventos WHERE user_id = ?");
+    $stmt = $pdo->prepare("SELECT COUNT(*) FROM eventos WHERE usuario_id = ?");
     $stmt->execute([$usuario_id]);
     $stats['publicacoes'] = $stmt->fetchColumn();
 
-    // Contar seguidores (exemplo - implemente tabela followers depois)
-    $stmt = $pdo->prepare("SELECT COUNT(*) FROM followers WHERE user_id = ?");
-    $stmt->execute([$usuario_id]);
-    $stats['seguidores'] = $stmt->fetchColumn() ?: 0;
 
     // Buscar eventos com informações completas
     $stmt = $pdo->prepare("
         SELECT e.*, 
-               (SELECT COUNT(*) FROM likes WHERE event_id = e.event_id) as likes_count,
-               (SELECT COUNT(*) FROM comments WHERE event_id = e.event_id) as comments_count
+               (SELECT COUNT(*) FROM likes WHERE id = e.id) as likes_count,
+               (SELECT COUNT(*) FROM comentarios WHERE id = e.id) as comments_count
         FROM eventos e
-        WHERE e.user_id = ?
-        ORDER BY e.created_at DESC 
+        WHERE e.usuario_id = ?
+        ORDER BY e.data_criacao DESC 
         LIMIT 6
     ");
     $stmt->execute([$usuario_id]);
@@ -73,7 +72,7 @@ require __DIR__ . '/../components/navbar.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= htmlspecialchars($usuario['name'] ?? 'Perfil') ?> - Meets</title>
+    <titulo><?= htmlspecialchars($usuario['nome'] ?? 'Perfil') ?> - Meets</titulo>
     <link rel="stylesheet" href="<?= BASE_URL ?>view/css/estilo-perfil.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -82,12 +81,17 @@ require __DIR__ . '/../components/navbar.php';
 <section class="profile-container">
     <div class="profile-header">
         <div class="profile-img-container">
-            <img src="<?= htmlspecialchars($foto) ?>" alt="Foto de Perfil" class="profile-img">
+            <pre><?= $foto ?></pre>
+
+                <img src="<?= htmlspecialchars($foto) ?>" 
+     alt="Foto de Perfil" 
+     class="profile-img"
+     onerror="this.onerror=null; this.src='<?= BASE_URL ?>uploads/imgPadrao.png'">
         </div>
 
         <div class="profile-info">
             <div class="profile-actions">
-                <h1 class="profile-username"><?= htmlspecialchars($usuario['name']) ?></h1>
+                <h1 class="profile-username"><?= htmlspecialchars($usuario['nome']) ?></h1>
                 <div class="action-buttons">
                     <a href="<?= BASE_URL ?>view/EditarPerfil.php" class="btn-edit">
                         <button class="edit-btn">Editar perfil</button>
@@ -114,7 +118,7 @@ require __DIR__ . '/../components/navbar.php';
             </div>
 
             <div class="profile-bio">
-                <h2 class="bio-name"><?= htmlspecialchars($usuario['name']) ?></h2>
+                <h2 class="bio-name"><?= htmlspecialchars($usuario['nome']) ?></h2>
                 <p class="bio-text">@<?= htmlspecialchars($usuario['nickmaname'] ?? '') ?></p>
                 <p class="bio-text">✉️ <?= htmlspecialchars($usuario['email']) ?></p>
                 <p class="bio-text">📞 <?= htmlspecialchars($usuario['numero'] ?? '') ?></p>
@@ -140,17 +144,17 @@ require __DIR__ . '/../components/navbar.php';
     <div class="gallery">
         <?php foreach ($eventos as $evento): ?>
             <div class="photo">
-                <img src="<?= !empty($evento['image_reference']) ? 
-                          htmlspecialchars(BASE_URL . $evento['image_reference']) : 
+                <img src="<?= !empty($evento['imagem']) ? 
+                          htmlspecialchars(BASE_URL . $evento['imagem']) : 
                           BASE_URL . 'assets/default-event.jpg' ?>" 
-                     alt="<?= htmlspecialchars($evento['title']) ?>">
+                     alt="<?= htmlspecialchars($evento['titulo']) ?>">
                 <div class="photo-overlay">
                     <span><i class="fas fa-heart"></i> <?= $evento['likes_count'] ?></span>
                     <span><i class="fas fa-comment"></i> <?= $evento['comments_count'] ?></span>
                 </div>
                 <div class="event-info">
-                    <h3><?= htmlspecialchars($evento['title']) ?></h3>
-                    <p><?= date('d/m/Y', strtotime($evento['event_date'])) ?></p>
+                    <h3><?= htmlspecialchars($evento['titulo']) ?></h3>
+                    <p><?= date('d/m/Y', strtotime($evento['data_evento'])) ?></p>
                 </div>
             </div>
         <?php endforeach; ?>

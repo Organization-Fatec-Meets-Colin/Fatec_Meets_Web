@@ -17,6 +17,7 @@ require __DIR__ . '/../config.php';
 
         <!-- dark mode -->
         <div class="navbar-user-area">
+            <label for="">Modo:</label>
         <!-- ✅ Botão interruptor -->
             <div class="theme-toggle">
                 <input type="checkbox" id="theme-switch">

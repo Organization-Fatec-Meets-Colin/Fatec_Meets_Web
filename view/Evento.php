@@ -25,7 +25,7 @@ if (!$evento) {
     die('Evento não encontrado.');
 }
 
-include '../components/navbar.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -34,10 +34,13 @@ include '../components/navbar.php';
     <meta charset="UTF-8">
     <title><?= htmlspecialchars($evento['titulo']) ?> - Evento</title>
     <link rel="stylesheet" href="css/estilo-evento.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
 </head>
 <body>
 
-<div class="meet-container">
+<?php include '../components/navbar.php'; ?>
+
+<div class="meet-container post-content">
     <img src="../<?= htmlspecialchars($evento['imagem']) ?>" alt="Imagem do Evento" class="meet-image">
 
     <h1 class="meet-title"><?= htmlspecialchars($evento['titulo']) ?></h1>

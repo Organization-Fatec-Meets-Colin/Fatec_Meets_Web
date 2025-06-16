@@ -28,7 +28,7 @@
 
         <div class="form-group">
             <label for="local">Local:</label>
-            <input type="text" name="local" id="local">
+            <input type="text" name="local" id="local" placeholder="Digite algo...">
             <!-- <select name="local" id="local">
                 <option value="%" selected>Todos</option>
                 <option value="Auditório">Auditório</option>

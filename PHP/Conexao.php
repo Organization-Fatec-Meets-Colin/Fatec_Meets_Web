@@ -5,10 +5,10 @@
 require __DIR__ . '/config.php';
 
 // Configurações do banco de dados
-$servidor = "sql312.infinityfree.com"; // onde o MySQL está instalado
-$usuario = "if0_38701439"; // usuário do banco (padrão XAMPP/WAMP é 'root')
-$senha = "Ye20N4PfvZ"; // senha do banco (vazia por padrão no XAMPP/WAMP)
-$banco = "if0_38701439_fatecmeets"; // nome do banco que vamos usar
+$servidor = "localhost"; // onde o MySQL está instalado
+$usuario = "root"; // usuário do banco (padrão XAMPP/WAMP é 'root')
+$senha = ""; // senha do banco (vazia por padrão no XAMPP/WAMP)
+$banco = "cadastro_usuario"; // nome do banco que vamos usar
 
 
 

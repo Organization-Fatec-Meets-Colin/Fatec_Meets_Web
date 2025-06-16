@@ -23,14 +23,13 @@ try {
         throw new Exception("Usuário não encontrado");
     }
 
-    // CORREÇÃO NO CÓDIGO PHP (parte superior)
-    $foto = !empty($usuario['profile_image']) ?
-        BASE_URL . $usuario['profile_image'] :
-        BASE_URL . 'uploads/imgPadrao.png';
+    $fotoUsuario = $usuario['profile_image'] ?? '';
+    $caminhoPadrao = BASE_URL . 'uploads/imgPadrao.png';
+    $caminhoFoto = (!empty($fotoUsuario) && file_exists(__DIR__ . '/../' . $fotoUsuario))
+        ? BASE_URL . $fotoUsuario
+        : $caminhoPadrao;
 
-    echo '<pre>';
-    print_r($usuario['profile_image']);
-    echo '</pre>';
+
 
     // Verifique o nome real do campo no banco:
 //print_r($usuario); // Descomente para debug
@@ -90,8 +89,9 @@ try {
         <div class="profile-header">
             <div class="profile-img-container">
 
-                <img src="<?= htmlspecialchars($foto) ?>" alt="Foto de Perfil" class="profile-img"
-                    onerror="this.onerror=null; this.src='<?= BASE_URL ?>uploads/imgPadrao.png'">
+                <img src="<?= htmlspecialchars($caminhoFoto) ?>" alt="Foto de Perfil" class="profile-img"
+                    onerror="this.onerror=null; this.src='<?= $caminhoPadrao ?>'">
+
             </div>
 
             <div class="profile-info">

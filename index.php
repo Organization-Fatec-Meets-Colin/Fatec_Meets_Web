@@ -37,7 +37,7 @@ $eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <!-- encontrou os posts -->
                 <div class="post">
                     <?php if ($evento['imagem']): ?>
-                        
+
                         <!-- imagem do post -->
                         <a href="view/Evento.php?id=<?= $evento['id'] ?>">
                             <div class="post-image">
@@ -59,7 +59,12 @@ $eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <div class="post-footer">
                             Publicado em <?= date('d/m/Y H:i', strtotime($evento['data_criacao'])) ?> por:
                             <u><?= htmlspecialchars($evento['nome']) ?></u>
-                            <img src="<?= htmlspecialchars($evento['imagem']) ?>" class="profile-img-mini" alt="Foto perfil">
+                            <?php
+                            $fotoPerfil = !empty($evento['foto']) && file_exists(__DIR__ . '/' . $evento['foto'])
+                                ? BASE_URL . $evento['foto']
+                                : BASE_URL . 'uploads/imgPadrao.png';
+                            ?>
+                            <img src="<?= htmlspecialchars($fotoPerfil) ?>" class="profile-img-mini" alt="Foto perfil">
                         </div>
                     </div>
                 </div>

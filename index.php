@@ -59,7 +59,7 @@ $eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <div class="post-footer">
                             Publicado em <?= date('d/m/Y H:i', strtotime($evento['data_criacao'])) ?> por:
                             <u><?= htmlspecialchars($evento['nome']) ?></u>
-                            <img src="<?= htmlspecialchars($evento['foto']) ?>" class="profile-img-mini" alt="Foto perfil">
+                            <img src="<?= htmlspecialchars($evento['imagem']) ?>" class="profile-img-mini" alt="Foto perfil">
                         </div>
                     </div>
                 </div>

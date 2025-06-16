@@ -25,8 +25,12 @@ try {
 
     // CORREÇÃO NO CÓDIGO PHP (parte superior)
     $foto = !empty($usuario['profile_image']) ?
-        BASE_URL . 'uploads/' . $usuario['profile_image'] :
+        BASE_URL . $usuario['profile_image'] :
         BASE_URL . 'uploads/imgPadrao.png';
+
+    echo '<pre>';
+    print_r($usuario['profile_image']);
+    echo '</pre>';
 
     // Verifique o nome real do campo no banco:
 //print_r($usuario); // Descomente para debug
@@ -63,8 +67,7 @@ try {
     die($e->getMessage());
 }
 
-// Inclui a navbar
-require __DIR__ . '/../components/navbar.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -79,6 +82,9 @@ require __DIR__ . '/../components/navbar.php';
 </head>
 
 <body>
+
+
+    <?php include '../components/navbar.php'; ?>
 
     <section class="profile-container">
         <div class="profile-header">

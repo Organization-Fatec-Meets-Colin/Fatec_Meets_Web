@@ -191,6 +191,11 @@ body.dark-mode .switch {
     background-color: #555;
 }
 
+/* LOGOTIPO TAMANHO */
+.LOGOTIPO{
+    max-width: 20vh;
+}
+
 body.dark-mode .post {
     background-color: #2a2a2a;
     border: 1px solid #444;

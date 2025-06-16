@@ -9,7 +9,10 @@ require __DIR__ . '/../config.php';
 
 <nav class="navbar">
     <div class="navbar-container">
-        <a href="<?= BASE_URL ?>index.php" class="navbar-logo">Fatec Meet</a>
+        <!-- LOGO -->
+        <a href="<?= BASE_URL ?>index.php" class="navbar-logo">
+        <img  class="LOGOTIPO" src="<?php BASE_URL ?>uploads/OFICIALLOGO.png" alt="">
+        </a>
 
         <div class="menu-toggle">
             <i class="fas fa-bars"></i>

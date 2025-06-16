@@ -11,14 +11,30 @@ if (session_status() === PHP_SESSION_NONE) {
 
 // Define a URL base apenas se ainda não estiver definida
 if (!defined('BASE_URL')) {
-    define('BASE_URL', '/'); // ajuste se seu projeto estiver em subpasta
+    // ajuste se seu projeto estiver em subpasta
+    
+    // INFINITYFREE
+    
+    // define('BASE_URL', '/');
+
+    define('BASE_URL', '/Fatec_Meets_Web/');
 }
 
 // Dados de conexão com banco de dados
-$host = 'sql312.infinityfree.com';
+
+// LOCALHOST
+
+$host = 'localhost';
 $db   = 'if0_38701439_fatecmeets';
-$user = 'if0_38701439';
-$pass = 'Ye20N4PfvZ';
+$user = 'root';
+$pass = '';
+
+// PARA INFINITYFREE
+
+// $host = 'sql312.infinityfree.com';
+// $db   = 'if0_38701439_fatecmeets';
+// $user = 'if0_38701439';
+// $pass = 'Ye20N4PfvZ';
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pass);

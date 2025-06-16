@@ -9,6 +9,10 @@
     --btn-hover: #ff5252;
 }
 
+a{
+    text-decoration: none;
+}
+
 .profile-img-mini {
     width: 40px;
    height: 40px;
@@ -201,4 +205,50 @@ button:hover, .edit-btn:hover {
     .post {
         max-width: 90%;
     }
+}
+
+/* ============================
+   RESPONSIVIDADE: FEED/MOBILE
+   ============================ */
+
+@media only screen and (max-width: 768px) {
+  /* estreita o padding geral do feed */
+  .feed {
+    padding: 10px;
+    margin-top: 60px; /* ajusta para altura da navbar */
+  }
+
+  /* posts em 100% da largura, sem margens laterais */
+  .post {
+    max-width: 100%;
+    margin: 0 0 20px;
+    padding: 10px;
+    box-shadow: none;        /* simplifica sombra em mobile */
+    border-radius: 5px;
+  }
+
+  /* reduz altura da imagem para não cortar demais */
+  .post-image img {
+    max-height: 200px;
+  }
+
+  /* títulos e textos com fonte um pouco menor */
+  .post-content h3 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+  }
+  .post-content p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+  
+  /* botões ficam empilhados ou mais finos */
+  .post-actions {
+    flex-direction: column;
+    gap: 5px;
+  }
+  .like-button, .comment-button {
+    width: 100%;
+    text-align: center;
+  }
 }

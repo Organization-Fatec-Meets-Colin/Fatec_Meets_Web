@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $senha_cripto = password_hash($senha, PASSWORD_DEFAULT);
 
-    $sql = "INSERT INTO users (nome, email, nickmaname, numero, senha) 
+    $sql = "INSERT INTO users (nome, email, nickname, numero, senha) 
         VALUES (:nome, :email, :nickmaname, :numero, :senha)";
     $stmt = $pdo->prepare($sql);
     $sucesso = $stmt->execute([

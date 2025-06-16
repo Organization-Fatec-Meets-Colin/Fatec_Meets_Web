@@ -1,15 +1,3 @@
-<?php require __DIR__ . '/../config.php';  // ou '/config.php' se estiver em raiz
-      require __DIR__ . '/../components/navbar.php';
-
-require __DIR__ . '/../config.php';
-if (!isset($_SESSION['usuario'])) {
-    header('Location: ' . BASE_URL . 'view/Login.php');
-    exit;
-}
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -24,23 +12,30 @@ if (!isset($_SESSION['usuario'])) {
 
 <body>
 
+<?php 
+require __DIR__ . '/../config.php'; 
+    require __DIR__ . '/../components/navbar.php';
 
-    <!-- Navbar -->
-    <?php include '../components/navbar.php'; ?>
-
+require __DIR__ . '/../config.php';
+if (!isset($_SESSION['usuario'])) {
+    header('Location: ' . BASE_URL . 'view/Login.php');
+    exit;
+}
+?>
+    
     <div class="container">
         <div class="post-form">
             <h2>Criar Novo Post</h2>
             <form action="../PHP/upload.php" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="titulo">Título do evento:</label>
-                    <input type="text" id="titulo" name="titulo" required>
-                    <span class="hint">Escolha o título para o seu meet</span>
+                    <input type="text" id="titulo" name="titulo" placeholder="Título do meet aqui" required>
+                    <!-- <span class="hint">Escolha o título para o seu meet</span> -->
                 </div>
 
                 <div class="form-group">
                     <label for="local">Local do evento:</label>
-                    <input type="text" id="local" name="local" required>
+                    <input type="text" id="local" name="local" placeholder="Local do meet">
 
                     <span class="hint">Ex: Biblioteca, sala maker, quadra ou na grama</span>
                 </div>
@@ -59,15 +54,15 @@ if (!isset($_SESSION['usuario'])) {
                 <div class="form-group">
                     <label for="data_evento">Data e Hora do Evento:</label>
                     <input type="datetime-local" id="data_evento" name="data_evento" required>
-                    <span class="hint">Escolha quando o evento vai acontecer</span>
+                    <!-- <span class="hint">Escolha quando o evento vai acontecer</span> -->
                 </div>
 
 
 
                 <div class="form-group">
                     <label for="descricao">Descrição:</label>
-                    <textarea id="descricao" name="descricao" rows="4" required></textarea>
-                    <span class="hint">Aqui é um espaço livre para falar mais sobre seu meet! :) </span>
+                    <textarea id="descricao" name="descricao" rows="4" placeholder="Aqui é um espaço livre para falar mais sobre seu meet! :) "required></textarea>
+                    <!-- <span class="hint">Aqui é um espaço livre para falar mais sobre seu meet! :) </span> -->
                 </div>
 
                 <div class="form-group">

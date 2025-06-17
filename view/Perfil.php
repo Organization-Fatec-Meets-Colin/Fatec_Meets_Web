@@ -104,6 +104,20 @@ try {
                         <button class="settings-btn" aria-label="Configurações">
                             <i class="fas fa-cog"></i>
                         </button>
+
+                         <!-- Botão de idioma -->
+                            <div id="language-menu" class="language-menu" style="display: none;">
+                                <form method="post" action="">
+                                    <select name="lang" onchange="this.form.submit()">
+                                        <option value="pt" <?= ($_SESSION['lang'] ?? 'pt') == 'pt' ? 'selected' : '' ?>>
+                                            Português</option>
+                                        <option value="en" <?= ($_SESSION['lang'] ?? 'pt') == 'en' ? 'selected' : '' ?>>
+                                            English
+                                        </option>
+                                    </select>
+                                </form>
+                            </div>
+
                     </div>
                 </div>
 
@@ -174,6 +188,16 @@ try {
             <?php endif; ?>
         </div>
     </section>
+
+    <script>
+        const settingsBtn = document.querySelector(".settings-btn");
+        const languageMenu = document.getElementById("language-menu");
+
+        settingsBtn.addEventListener("click", () => {
+            languageMenu.style.display = languageMenu.style.display === "none" ? "block" : "none";
+        });
+    </script>
+
 
 </body>
 

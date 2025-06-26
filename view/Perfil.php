@@ -53,7 +53,7 @@ try {
                (SELECT COUNT(*) FROM likes WHERE id = e.id) as likes_count,
                (SELECT COUNT(*) FROM comentarios WHERE id = e.id) as comments_count
         FROM eventos e
-        WHERE e.usuario_id = ?
+        WHERE e.usuario_id = ? AND e.status = 1
         ORDER BY e.data_criacao DESC 
         LIMIT 6
     ");
@@ -66,6 +66,15 @@ try {
     die($e->getMessage());
 }
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['close_post'], $_POST['post_id'])) {
+    $postId = intval($_POST['post_id']);
+    // Atualiza o status para 0
+    $stmt = $pdo->prepare("UPDATE eventos SET status = 0 WHERE id = ? AND usuario_id = ?");
+    $stmt->execute([$postId, $usuario_id]);
+    // Opcional: redireciona para evitar repost
+    header("Location: " . $_SERVER['REQUEST_URI']);
+    exit;
+}
 
 ?>
 
@@ -163,18 +172,21 @@ try {
         <div class="gallery">
             <?php foreach ($eventos as $evento): ?>
                 <div class="photo">
-                    <img src="<?= !empty($evento['imagem']) ?
-                        htmlspecialchars(BASE_URL . $evento['imagem']) :
-                        BASE_URL . 'assets/default-event.jpg' ?>" alt="<?= htmlspecialchars($evento['titulo']) ?>">
+                    <form method="post" class="close-post-form">
+                        <input type="hidden" name="post_id" value="<?= $evento['id'] ?>">
+                        <button type="submit" name="close_post" class="close-post-btn" title="Remover post">×</button>
+                    </form>
+                    <img src="<?= !empty($evento['imagem']) ? htmlspecialchars(BASE_URL . $evento['imagem']) : BASE_URL . 'assets/default-event.jpg' ?>" alt="<?= htmlspecialchars($evento['titulo']) ?>">
                     <div class="photo-overlay">
                         <span><i class="fas fa-heart"></i> <?= $evento['likes_count'] ?></span>
                         <span><i class="fas fa-comment"></i> <?= $evento['comments_count'] ?></span>
                     </div>
                     <div class="event-info">
-                        <h3><?= htmlspecialchars($evento['titulo']) ?></h3>
-                        <p><?= date('d/m/Y', strtotime($evento['data_evento'])) ?></p>
+                        <strong><?= htmlspecialchars($evento['titulo']) ?></strong><br>
+                        <span><?= date('d/m/Y', strtotime($evento['data_evento'])) ?></span>
                     </div>
                 </div>
+
             <?php endforeach; ?>
 
             <?php if (empty($eventos)): ?>

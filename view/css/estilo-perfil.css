@@ -4,7 +4,6 @@
     --text-color: #333;
     --light-gray: #f5f5f5;
     --white: #ffffff;
-    --background: #fff;
     --btn-color: #ff6b6b;
     --btn-hover: #ff5252;
 }
@@ -16,7 +15,7 @@ body {
     color: var(--text-color);
 }
 
-body.dark-mode div.profile-img-container{
+body.dark-mode div.profile-img-container {
     background-color: var(--white);
 }
 
@@ -68,7 +67,9 @@ body.dark-mode div.profile-img-container{
     margin: 0;
 }
 
-.edit-btn, .settings-btn {
+.edit-btn, 
+.settings-btn,
+.close-post-btn {
     padding: 8px 15px;
     background-color: var(--btn-color);
     color: #fff;
@@ -78,7 +79,9 @@ body.dark-mode div.profile-img-container{
     transition: background 0.3s;
 }
 
-.edit-btn:hover, .settings-btn:hover {
+.edit-btn:hover, 
+.settings-btn:hover,
+.close-post-btn:hover {
     background-color: var(--btn-hover);
 }
 
@@ -159,6 +162,9 @@ body.dark-mode div.profile-img-container{
     position: relative;
     overflow: hidden;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .photo img {
@@ -166,6 +172,8 @@ body.dark-mode div.profile-img-container{
     display: block;
     border-radius: 10px;
     transition: transform 0.3s;
+    position: relative;
+    z-index: 1;
 }
 
 .photo:hover img {
@@ -191,7 +199,39 @@ body.dark-mode div.profile-img-container{
     opacity: 1;
 }
 
-/* Garante que a navbar fique sempre visível e acima do conteúdo */
+.close-post-form {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 10;
+}
+
+.close-post-btn {
+    background: var(--btn-color);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.event-info {
+    padding: 10px 8px 8px 8px;
+    width: 100%;
+    font-size: 1rem;
+    color: #222;
+    background: none;
+}
+
+/* Navbar */
 .navbar {
     position: sticky !important;
     top: 0 !important;
@@ -200,10 +240,10 @@ body.dark-mode div.profile-img-container{
     width: 100%;
 }
 
-/* Garante espaço para a navbar no mobile */
+/* Responsividade */
 @media (max-width: 768px) {
     .profile-container {
-        padding-top: 70px; /* ajuste conforme a altura da sua navbar */
+        padding-top: 70px;
     }
 
     .profile-header {
@@ -211,10 +251,7 @@ body.dark-mode div.profile-img-container{
         align-items: center;
     }
 
-    .profile-actions {
-        justify-content: center;
-    }
-
+    .profile-actions,
     .profile-stats {
         justify-content: center;
     }

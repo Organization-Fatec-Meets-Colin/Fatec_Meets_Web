@@ -90,3 +90,14 @@ require __DIR__ . '/../config.php';
     </script>
 
 </nav>
+
+<script>
+// filepath: c:\Users\Felipe\Documents\GitHub\Fatec_Meets_Web\components\navbar.php
+// ...existing code...
+const menuToggle = document.querySelector('.menu-toggle');
+const navbarLinks = document.querySelector('.navbar-links');
+
+menuToggle.addEventListener('click', () => {
+    navbarLinks.classList.toggle('active');
+});
+</script>

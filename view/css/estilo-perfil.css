@@ -191,8 +191,21 @@ body.dark-mode div.profile-img-container{
     opacity: 1;
 }
 
-/* Responsividade */
+/* Garante que a navbar fique sempre visível e acima do conteúdo */
+.navbar {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1000 !important;
+    display: flex !important;
+    width: 100%;
+}
+
+/* Garante espaço para a navbar no mobile */
 @media (max-width: 768px) {
+    .profile-container {
+        padding-top: 70px; /* ajuste conforme a altura da sua navbar */
+    }
+
     .profile-header {
         flex-direction: column;
         align-items: center;

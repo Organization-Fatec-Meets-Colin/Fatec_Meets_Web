@@ -16,7 +16,7 @@
 require __DIR__ . '/../config.php'; 
     require __DIR__ . '/../components/navbar.php';
 
-require __DIR__ . '/../config.php';
+
 if (!isset($_SESSION['usuario'])) {
     header('Location: ' . BASE_URL . 'view/Login.php');
     exit;
@@ -68,12 +68,12 @@ if (!isset($_SESSION['usuario'])) {
                 <div class="form-group">
                     <label for="imagem">Selecionar Imagem:</label>
                     <div class="file-upload">
-                        <label for="imagem" class="upload-area" id="uploadLabel">
+                        <label for="imagem" class="upload-area" id="uploadLabel" style="display: flex; flex-direction: column; align-items: center; justify-content: center; border: 2px dashed #aaa; border-radius: 10px; padding: 30px 10px; cursor: pointer; background-size: cover; background-position: center; min-height: 180px; color: #555; text-align: center;">
                             <i class="fas fa-cloud-upload-alt"></i>
                             <span class="upload-text">Arraste e solte uma imagem ou clique para selecionar</span>
                             <span class="file-info" id="fileInfo">Nenhum arquivo selecionado</span>
                         </label>
-                        <input type="file" id="imagem" name="imagem" accept="image/*" required>
+                        <input type="file" id="imagem" name="imagem" accept="image/*" required style="display:none;">
                     </div>
                 </div>
 
@@ -85,29 +85,28 @@ if (!isset($_SESSION['usuario'])) {
     </div>
 
     <script>
-        // Mostrar nome do arquivo selecionado
-        document.getElementById('imagem').addEventListener('change', function (e) {
-            const fileName = e.target.files[0] ? e.target.files[0].name : 'Nenhum arquivo selecionado';
-            document.getElementById('fileInfo').textContent = fileName;
+        document.getElementById('uploadLabel').addEventListener('click', function(e) {
+    document.getElementById('imagem').click();
+});
 
-            // Mostrar prévia da imagem se quiser
-            if (e.target.files && e.target.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function (event) {
-                    const uploadLabel = document.getElementById('uploadLabel');
-                    uploadLabel.style.backgroundImage = `url(${event.target.result})`;
-                    uploadLabel.style.backgroundSize = 'cover';
-                    uploadLabel.style.backgroundPosition = 'center';
-                };
-                reader.readAsDataURL(e.target.files[0]);
-            }
-        });
-
-
-        document.querySelector('.menu-toggle').addEventListener('click', function () {
-            document.querySelector('.navbar-links').classList.toggle('active');
-        });
-
+document.getElementById('imagem').addEventListener('change', function (e) {
+    const fileInfo = document.getElementById('fileInfo');
+    const uploadLabel = document.getElementById('uploadLabel');
+    if (e.target.files && e.target.files[0]) {
+        const fileName = e.target.files[0].name;
+        fileInfo.textContent = fileName;
+        const reader = new FileReader();
+        reader.onload = function (event) {
+            uploadLabel.style.backgroundImage = `url('${event.target.result}')`;
+            uploadLabel.style.color = '#fff';
+        };
+        reader.readAsDataURL(e.target.files[0]);
+    } else {
+        fileInfo.textContent = 'Nenhum arquivo selecionado';
+        uploadLabel.style.backgroundImage = '';
+        uploadLabel.style.color = '#555';
+    }
+});
     </script>
 
 </body>

@@ -73,16 +73,12 @@ $eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
 
     <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navbarLinks = document.querySelector('.navbar-links');
-        if (menuToggle && navbarLinks) {
-            menuToggle.addEventListener('click', function () {
-                navbarLinks.classList.toggle('active');
-            });
-        }
-    });
-    </script>
+const menuToggle = document.querySelector('.menu-toggle');
+const navbarLinks = document.querySelector('.navbar-links');
+menuToggle?.addEventListener('click', () => {
+  navbarLinks.classList.toggle('active');
+});
+</script>
 
 </body>
 

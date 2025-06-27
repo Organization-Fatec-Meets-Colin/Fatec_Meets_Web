@@ -5,8 +5,9 @@
 require __DIR__ . '/../config.php';
 ?>
 
-<link rel="stylesheet" href="<?= BASE_URL ?>components/navbar.css">
-
+<head>
+    <link rel="stylesheet" href="<?= BASE_URL ?>components/navbar.css">
+</head>
 <nav class="navbar">
     <div class="navbar-container">
         <a href="<?= BASE_URL ?>index.php" class="navbar-logo">Fatec Meet</a>
@@ -18,11 +19,11 @@ require __DIR__ . '/../config.php';
         <!-- dark mode -->
         <div class="navbar-user-area">
             <label for="">Modo:</label>
-        <!-- ✅ Botão interruptor -->
-        <div class="theme-toggle">
-        <input type="checkbox" id="theme-switch">
-        <label for="theme-switch" class="switch"></label>
-        </div>
+            <!-- ✅ Botão interruptor -->
+            <div class="theme-toggle">
+                <input type="checkbox" id="theme-switch">
+                <label for="theme-switch" class="switch"></label>
+            </div>
         </div>
 
         <!-- Botões de navegação para outra tela -->
@@ -37,13 +38,13 @@ require __DIR__ . '/../config.php';
         <div class="navbar-user-area">
             <?php if (isset($_SESSION['usuario'])): ?>
                 <?php
-                    $foto = $_SESSION['usuario']['foto'] ?? '';
-                    $caminhoPadrao = BASE_URL . 'imagem/imgPadrao.png';
+                $foto = $_SESSION['usuario']['foto'] ?? '';
+                $caminhoPadrao = BASE_URL . 'imagem/imgPadrao.png';
 
-                    // Verifica se o caminho da imagem existe fisicamente
-                    $caminhoFoto = $foto && file_exists(__DIR__ . '/../' . $foto)
-                        ? BASE_URL . $foto
-                        : $caminhoPadrao;
+                // Verifica se o caminho da imagem existe fisicamente
+                $caminhoFoto = $foto && file_exists(__DIR__ . '/../' . $foto)
+                    ? BASE_URL . $foto
+                    : $caminhoPadrao;
                 ?>
                 <img src="<?= htmlspecialchars($caminhoFoto) ?>" class="profile-img-mini" alt="Perfil">
 
@@ -56,7 +57,7 @@ require __DIR__ . '/../config.php';
     </div>
 
     <!-- Carrega tema escuro ou claro -->
-        <script>
+    <script>
         const themeSwitch = document.getElementById('theme-switch');
         const body = document.body;
 
@@ -75,29 +76,30 @@ require __DIR__ . '/../config.php';
                 localStorage.setItem('theme', 'light');
             }
         });
-        </script>
+    </script>
 
     <!-- teste do Vlibras -->
     <div vw class="enabled">
-    <div vw-access-button class="active"></div>
-    <div vw-plugin-wrapper>
-      <div class="vw-plugin-top-wrapper"></div>
-    </div>
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
     </div>
     <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
     <script>
-    new window.VLibras.Widget('https://vlibras.gov.br/app');
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navbarLinks = document.querySelector('.navbar-links');
+            if (menuToggle && navbarLinks) {
+                menuToggle.addEventListener('click', () => {
+                    navbarLinks.classList.toggle('active');
+                });
+            }
+        });
     </script>
 
 </nav>
-
-<script>
-// filepath: c:\Users\Felipe\Documents\GitHub\Fatec_Meets_Web\components\navbar.php
-// ...existing code...
-const menuToggle = document.querySelector('.menu-toggle');
-const navbarLinks = document.querySelector('.navbar-links');
-
-menuToggle.addEventListener('click', () => {
-    navbarLinks.classList.toggle('active');
-});
-</script>

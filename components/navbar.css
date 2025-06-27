@@ -211,6 +211,17 @@ body.dark-mode div.profile-img-container {
 
 @media (max-width: 768px) {
     .navbar-container {
+        align-items: center; /* Garante alinhamento vertical */
+    }
+
+    .menu-toggle {
+        display: block;
+        order: 2;
+        margin-left: auto;
+        align-self: center; /* Centraliza verticalmente */
+    }
+    
+    .navbar-container {
         flex-wrap: wrap;
         position: relative;
         padding: 0 20px;

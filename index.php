@@ -16,9 +16,11 @@ $eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feed - Fatec Meet</title>
-    <link rel="stylesheet" href="view/css/estilo-feeds.css">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="view/css/dark-mode.css">
+    <link rel="stylesheet" href="view/css/estilo-feeds.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>components/navbar.css">
 </head>
 
 <body>
@@ -71,10 +73,12 @@ $eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
 
     <script>
-        document.querySelector('.menu-toggle').addEventListener('click', function () {
-            document.querySelector('.navbar-links').classList.toggle('active');
-        });
-    </script>
+const menuToggle = document.querySelector('.menu-toggle');
+const navbarLinks = document.querySelector('.navbar-links');
+menuToggle?.addEventListener('click', () => {
+  navbarLinks.classList.toggle('active');
+});
+</script>
 
 </body>
 

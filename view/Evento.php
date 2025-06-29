@@ -35,6 +35,7 @@ if (!$evento) {
     <title><?= htmlspecialchars($evento['titulo']) ?> - Evento</title>
     <link rel="stylesheet" href="css/estilo-evento.css">
     <link rel="stylesheet" href="css/dark-mode.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>components/navbar.css">
 </head>
 <body>
 
